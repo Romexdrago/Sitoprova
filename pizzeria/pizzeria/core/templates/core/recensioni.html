@@ -1,0 +1,20 @@
+<div class="container ">
+    <h3>Recensioni dei nostri clienti:</h3>
+    <div class="row justify-content-center ">
+        <div class="col-md-8">
+            {% for recensione in recensioni%}
+            <div class="card my-4">
+                <div class="card-body">
+                    <p class="card-text">Cliente: {{recensione.cliente.username}}</p>
+                    <p class="card-text">Data recensione: {{recensione.data_pubblicazione|date:"d M Y"}}</p>
+
+                    <p class="card-text">Recensione: {{recensione.contenuto}}</p>
+                    {% if recensione.pizza_ordinata %}
+                    <p class="card-text">Pizza ordinata: {{recensione.pizza_ordinata}}</p>
+                    {% else %} {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+{% extends 'base.html'%} {% block head_title %} {{ block.super }} {% endblock head_title %} {% load crispy_forms_tags %} {% block head_style%} {% endblock head_style%} {% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class=" col-lg-4 col-md-8 text-center text-center">
+            <h3>Pizza:{{pizza.nome}}</h3>
+            <div class="card">
+                <img class="card-img-top" src="{{pizza.immagine.url}}" alt="Card image cap">
+                <div class="card-body">
+                    <h3 class="card-title">{{pizza.nome}}</h3>
+                    <p class="card-text">{{pizza.ingredienti}}</p>
+                </div>
+            </div>
+        </div>
+
+
+        {% endblock %}

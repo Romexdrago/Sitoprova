@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+{% block head_title %}
+{{ block.super }}
+{% endblock head_title %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="row justify-content-center my-5">
+        <div class="col-md-3  text-center" style="border:gray 1px solid;">
+            <h3 class="mt-2">Risultati ricerca</h3>
+             <h4>Pizze</h4>
+                 {% if pizze %}
+                    {% for pizza in pizze %}
+                        <p><a href="{% url 'visualizza_pizza_view' pk=pizza.pk%}">@{{pizza.nome}}</a></p>
+                        <p>{{pizza.ingredienti|truncatewords:"3"}}</p>
+                        <hr>
+                    {% endfor %}
+                {% endif %}
+        </div>
+    </div>
+{% endblock %}

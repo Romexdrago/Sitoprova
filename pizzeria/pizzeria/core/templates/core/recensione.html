@@ -1,0 +1,13 @@
+{% load crispy_forms_tags %}
+    <div class="row  mt-5">
+        <div class=" col-md-8">
+            <h2>Scrivi la tua recensione.</h2>
+            <p>Se vuoi recensire il locale in generale puoi anche saltare il campo dell inserimento della pizza.</p>
+            <form  class="" action="{% url 'recensione_view' %}" method="post">
+                {% csrf_token %}
+                {{recensione|crispy}}
+                <input type="submit" class="btn btn-outline-info" value="Invia Recensione">
+            </form>
+        </div>
+    </div>
+

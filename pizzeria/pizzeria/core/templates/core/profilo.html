@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+{% block head_title %}
+{{block.super}}|Profilo-{{utente.username}}
+{% endblock head_title %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row  my-5">
+    <div class="col-lg-12 col-12 ">
+        <h1>Il tuo profilo...</h1>
+        <h3>Il tuo nome cliente: {{utente.username}}</h3>
+        {% if utente.email.len == 0  %}
+        <h6>Non è associata nessuna mail al tuo account.</h6>
+        {% else %}
+        <h6>La tua mail: {{utente.email}}</h6>
+        {% endif%}
+        <p>Data di registrazione: {{utente.date_joined}}</p>
+    </div>
+</div>
+<div class="row  my-5">
+    <div class="col-lg-12 col-12 ">
+        <div class="card">
+            <div class="card-header">
+                <h3>Le tue recensioni sul nostro sito:</h3>
+            </div>
+                <div class="card-body">
+                {% for recensione in request.user.recensioni.all%}
+                    <h3 class="cars-text">Contenuto Recensione: {{recensione.contenuto}}</h3>
+                    {% if recensione.pizza_ordinata %}
+                    <h3 class="cars-text">Pizza ordinata: {{recensione.pizza_ordinata}}</h3>
+                    {% else %}
+                    {% endif %}
+                    <h6 class="cars-text ">Data Recensione: {{recensione.data_pubblicazione|date:"d M Y "}}</h6>
+                    <hr>
+                {% endfor %}
+                </div>
+            </div>
+    </div>
+</div>
+{% endblock %}
